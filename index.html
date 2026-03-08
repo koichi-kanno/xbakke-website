@@ -2,11 +2,1151 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>xbakke 公式サイト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xbakke | ITマイクロ法人</title>
+    <meta name="description" content="ITマイクロ法人 xbakke の公式サイト。AI導入支援・Web3構築・システムコンサルティングを通じて、スモールチームでも戦えるデジタル基盤をデザインします。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #05060b;
+            --bg-elevated: #101320;
+            --bg-elevated-soft: #0b0e19;
+            --accent: #00a4ff; /* Cloudflare blue-ish */
+            --accent-soft: rgba(0, 164, 255, 0.16);
+            --accent-strong: #23b3ff;
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-subtle: rgba(148, 163, 184, 0.25);
+            --radius-lg: 18px;
+            --radius-pill: 999px;
+            --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.85);
+            --container-max: 1120px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #0b1120 0, #020617 40%, #020617 100%);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glow-orbit {
+            position: fixed;
+            inset: -120px;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(59, 130, 246, 0.18), transparent 55%),
+                radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.18), transparent 55%),
+                radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 0.9), #000);
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 20px 20px 64px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.75), transparent);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px 10px;
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            background:
+                conic-gradient(from 210deg, rgba(0, 164, 255, 0.85), rgba(56, 189, 248, 0.35), rgba(15, 23, 42, 0.9), rgba(0, 164, 255, 0.9));
+            position: relative;
+            box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.9),
+                0 18px 40px rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-mark-inner {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 0, #e5f2ff, #00a4ff);
+            box-shadow: 0 0 18px rgba(0, 164, 255, 0.85);
+        }
+
+        .brand-text-main {
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+        }
+
+        .brand-text-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.84rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 4px 0;
+            position: relative;
+            transition: color 0.18s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent), var(--accent-strong));
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95));
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: radial-gradient(circle, var(--accent-strong), var(--accent));
+            box-shadow: 0 0 12px rgba(0, 164, 255, 0.95);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .hero {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 10px 4px 4px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.85), rgba(15, 23, 42, 0.9));
+            color: var(--text-muted);
+            font-size: 0.72rem;
+        }
+
+        .eyebrow-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .eyebrow-tag span {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-strong);
+        }
+
+        .eyebrow-kbd {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.68rem;
+            padding: 3px 6px;
+            border-radius: 6px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.8);
+            color: var(--text-muted);
+        }
+
+        .hero-title {
+            margin-top: 18px;
+            margin-bottom: 16px;
+            font-size: clamp(2.4rem, 3vw + 1rem, 3.2rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .hero-title span.highlight {
+            background: linear-gradient(120deg, #e5f2ff, #ffffff, var(--accent-strong));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-lead {
+            margin: 0 0 24px;
+            max-width: 32rem;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .hero-tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-tagline strong {
+            color: var(--accent-strong);
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            position: relative;
+            border-radius: var(--radius-pill);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            color: #020617;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.9),
+                0 18px 40px rgba(15, 23, 42, 0.9),
+                0 0 40px rgba(0, 164, 255, 0.8);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.9),
+                0 20px 52px rgba(0, 0, 0, 1),
+                0 0 55px rgba(0, 164, 255, 1);
+        }
+
+        .btn-secondary {
+            border-radius: var(--radius-pill);
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            font-weight: 400;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            cursor: pointer;
+            color: var(--text-muted);
+            background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.94));
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease;
+        }
+
+        .btn-secondary span.dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--accent-strong);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(148, 163, 184, 0.9);
+            color: var(--text);
+            background: radial-gradient(circle at 100% 0, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.98));
+        }
+
+        .hero-footnote {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .hero-footnote span {
+            color: var(--accent-strong);
+        }
+
+        .hero-right {
+            position: relative;
+        }
+
+        .hero-panel {
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.25), transparent 55%),
+                radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.18), transparent 50%),
+                linear-gradient(145deg, #020617, #020617);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            padding: 18px 18px 16px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .hero-panel-title {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+        }
+
+        .hero-panel-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-panel-badge span.dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: radial-gradient(circle, #4ade80, #22c55e);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+        }
+
+        .hero-panel-main {
+            border-radius: 18px;
+            padding: 14px 14px 16px;
+            background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            position: relative;
+        }
+
+        .hero-panel-main::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background:
+                radial-gradient(circle at 0 0, rgba(0, 164, 255, 0.3), transparent 60%),
+                radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.25), transparent 60%);
+            opacity: 0.6;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero-panel-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 16px;
+        }
+
+        .metric-card {
+            border-radius: 14px;
+            padding: 10px 10px 12px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .metric-label {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .metric-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .metric-chip {
+            border-radius: var(--radius-pill);
+            padding: 3px 9px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .metric-chip span.pill {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .hero-panel-code {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.7rem;
+            border-radius: 14px;
+            padding: 8px 8px 10px;
+            background: #020617;
+            border: 1px solid rgba(30, 64, 175, 0.9);
+            color: #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-panel-code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .hero-panel-code-title {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+        }
+
+        .hero-panel-code-tag {
+            padding: 3px 7px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .hero-panel-code pre {
+            margin: 0;
+            white-space: pre;
+        }
+
+        .hero-panel-code .kw {
+            color: #38bdf8;
+        }
+
+        .hero-panel-code .fn {
+            color: #a5b4fc;
+        }
+
+        .hero-panel-code .str {
+            color: #f97316;
+        }
+
+        .hero-panel-code .cm {
+            color: #64748b;
+        }
+
+        .hero-panel-footer {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+        }
+
+        .hero-panel-footer span.accent {
+            color: var(--accent-strong);
+        }
+
+        .hero-panel-pills {
+            display: flex;
+            gap: 6px;
+        }
+
+        .hero-panel-pill {
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.9);
+            font-size: 0.66rem;
+        }
+
+        .section {
+            margin-top: 8px;
+            padding-top: 24px;
+            padding-bottom: 32px;
+            border-top: 1px solid rgba(15, 23, 42, 0.9);
+        }
+
+        .section-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .section-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .section-kicker {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-strong);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 0.88rem;
+            max-width: 26rem;
+            color: var(--text-muted);
+        }
+
+        .badge-outline {
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-outline span.dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: radial-gradient(circle, var(--accent-strong), var(--accent));
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            border-radius: var(--radius-lg);
+            padding: 14px 14px 16px;
+            background: radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.9), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            opacity: 0;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+                radial-gradient(circle at 100% 0%, rgba(0, 164, 255, 0.24), transparent 60%);
+            transition: opacity 0.22s ease-out;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-kicker {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-strong);
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        .card-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .card-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .card-list li + li {
+            margin-top: 4px;
+        }
+
+        .card-footer {
+            margin-top: 10px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pill-soft {
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 20px;
+        }
+
+        .about-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .about-meta {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .about-meta-item {
+            padding: 8px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.96);
+        }
+
+        .about-meta-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .about-meta-value {
+            font-size: 0.82rem;
+        }
+
+        .about-side {
+            display: grid;
+            gap: 8px;
+        }
+
+        .about-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .about-chip {
+            padding: 3px 9px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .about-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            border-top: 1px solid rgba(15, 23, 42, 0.95);
+            padding: 14px 20px 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: radial-gradient(circle at 50% 0, rgba(15, 23, 42, 1), #020617);
+        }
+
+        .footer-inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-strong);
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .hero-inner {
+                grid-template-columns: minmax(0, 1.1fr);
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .hero {
+                padding-top: 26px;
+            }
+
+            .section {
+                padding-top: 20px;
+                padding-bottom: 26px;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                grid-template-columns: minmax(0, 1.1fr);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                padding-inline: 18px;
+            }
+
+            .nav {
+                padding-inline: 16px;
+                gap: 10px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-inner {
+                gap: 24px;
+            }
+
+            .hero-title {
+                font-size: 2.15rem;
+            }
+
+            .hero-panel {
+                border-radius: 22px;
+            }
+
+            .hero-panel-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .service-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .section-header {
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to xbakke</h1>
-    <p>xbakke のホームページへようこそ。</p>
-    <p>現在、Docs as Codeの手法を用いて構築中です。</p>
+    <div class="glow-orbit" aria-hidden="true"></div>
+    <div class="page-shell">
+        <header>
+            <nav class="nav">
+                <div class="brand">
+                    <div class="brand-mark">
+                        <div class="brand-mark-inner"></div>
+                    </div>
+                    <div>
+                        <div class="brand-text-main">xbakke</div>
+                        <div class="brand-text-sub">IT マイクロ法人</div>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#services">事業内容</a>
+                    <a href="#about">会社概要</a>
+                    <span class="nav-pill">
+                        <span class="nav-pill-dot"></span>
+                        Docs as Code
+                    </span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div>
+                            <div class="eyebrow">
+                                <div class="eyebrow-tag">
+                                    <span>Docs as Code</span>
+                                </div>
+                                <span>コードで記述するドキュメント文化を、プロダクトに。</span>
+                                <span class="eyebrow-kbd">ESC &rarr; deploy</span>
+                            </div>
+
+                            <h1 id="hero-title" class="hero-title">
+                                スモールチームでも、<span class="highlight">クラウド級の戦闘力</span>を。
+                            </h1>
+                            <p class="hero-lead">
+                                xbakke は、AI・Web3・クラウドネイティブ技術を組み合わせ、
+                                スタートアップやマイクロ法人の「少人数でも勝てる」デジタル基盤づくりを支援する
+                                ITマイクロ法人です。
+                            </p>
+
+                            <div class="hero-meta">
+                                <div class="hero-tagline">
+                                    <strong>設計・実装・運用</strong>まで、エンジニア目線でフルサポート。
+                                </div>
+                                <div class="badge-outline">
+                                    <span class="dot"></span>
+                                    Cloudflare × GitHub × AI ワークフロー
+                                </div>
+                            </div>
+
+                            <div class="hero-actions">
+                                <a href="#services" class="btn-primary">
+                                    伴走支援メニューを見る
+                                    <span>↗</span>
+                                </a>
+                                <a href="#about" class="btn-secondary">
+                                    <span class="dot"></span>
+                                    会社概要・コンタクト
+                                </a>
+                            </div>
+
+                            <div class="hero-footnote">
+                                「<span>Docs as Code</span>」を前提にした開発・運用プロセスで、
+                                作って終わりではない継続的な改善サイクルを共創します。
+                            </div>
+                        </div>
+
+                        <div class="hero-right" aria-hidden="true">
+                            <div class="hero-panel">
+                                <div class="hero-panel-header">
+                                    <div class="hero-panel-title">Micro-firm Control Plane</div>
+                                    <div class="hero-panel-badge">
+                                        <span class="dot"></span>
+                                        live / cloud-native
+                                    </div>
+                                </div>
+                                <div class="hero-panel-main">
+                                    <div class="hero-panel-grid">
+                                        <div>
+                                            <div class="metric-card">
+                                                <div class="metric-label">運用自動化カバレッジ</div>
+                                                <div class="metric-value">80%+</div>
+                                                <div class="metric-chip-row">
+                                                    <div class="metric-chip">
+                                                        <span class="pill"></span>
+                                                        CI・デプロイ
+                                                    </div>
+                                                    <div class="metric-chip">
+                                                        AI テスト補完
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="metric-card" style="margin-top: 8px;">
+                                                <div class="metric-label">コミュニケーション</div>
+                                                <div class="metric-value">コード起点</div>
+                                                <div class="metric-chip-row">
+                                                    <div class="metric-chip">
+                                                        ADR / RFC
+                                                    </div>
+                                                    <div class="metric-chip">
+                                                        Git ベース議論
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hero-panel-code">
+                                            <div class="hero-panel-code-header">
+                                                <div class="hero-panel-code-title">docs-as-code.workflow</div>
+                                                <div class="hero-panel-code-tag">xbakke.yaml</div>
+                                            </div>
+                                            <pre><span class="cm"># from idea to shipping</span>
+<span class="kw">pipeline</span> <span class="fn">xbakke</span>:
+  <span class="kw">docs</span>: <span class="str">&quot;./docs/**/*.md&quot;</span>
+  <span class="kw">infra</span>: cloudflare_pages()
+  <span class="kw">ai</span>: review(&quot;architecture&quot;, &quot;security&quot;)
+  <span class="kw">deploy</span>: git_push(<span class="str">&quot;main&quot;</span>)</pre>
+                                        </div>
+                                    </div>
+                                    <div class="hero-panel-footer">
+                                        <span>xbakke is opinionated about <span class="accent">Docs as Code</span>.</span>
+                                        <div class="hero-panel-pills">
+                                            <span class="hero-panel-pill">AI-native</span>
+                                            <span class="hero-panel-pill">Cloudflare ready</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="section" aria-labelledby="services-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-title-block">
+                            <div class="section-kicker">Services</div>
+                            <h2 id="services-title" class="section-title">事業内容</h2>
+                        </div>
+                        <p class="section-description">
+                            「まずは小さく始めて、スケールできる設計へ」。
+                            PoC 段階から本番運用まで、エンジニアリングとビジネス両面から伴走します。
+                        </p>
+                    </div>
+
+                    <div class="service-grid">
+                        <article class="card">
+                            <div class="card-kicker">01 / AI Enablement</div>
+                            <h3 class="card-title">AI導入支援</h3>
+                            <p class="card-sub">
+                                ChatGPT 等のLLM活用から、社内ナレッジ検索、業務フロー自動化まで。
+                                小さく始めて確実に定着させる、現場目線のAI導入を設計します。
+                            </p>
+                            <ul class="card-list">
+                                <li>業務棚卸し・AI適用領域の選定</li>
+                                <li>PoC設計〜プロンプト設計・ガイドライン策定</li>
+                                <li>社内ポリシー・セキュリティ要件の整理</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="pill-soft">LLM / RAG / API integration</span>
+                                <span>月次レビューで継続改善</span>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-kicker">02 / Web3 Stack</div>
+                            <h3 class="card-title">Web3構築</h3>
+                            <p class="card-sub">
+                                NFT・トークン・スマートコントラクトを用いた、
+                                コミュニティ・プロダクトの新しい届け方を一緒にデザインします。
+                            </p>
+                            <ul class="card-list">
+                                <li>プロトタイプ〜本番環境の設計・実装</li>
+                                <li>ウォレット・UI まわりのUX設計</li>
+                                <li>監査・運用方針の整理とナレッジ共有</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="pill-soft">EVM / NFT / Auth</span>
+                                <span>安全性とUXのバランスを重視</span>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-kicker">03 / System Design</div>
+                            <h3 class="card-title">システムコンサル</h3>
+                            <p class="card-sub">
+                                既存システムのモダナイズから、新規サービスのアーキテクチャ設計、
+                                Cloudflare などエッジ環境を活かした低運用コストな構成まで。
+                            </p>
+                            <ul class="card-list">
+                                <li>現状分析とボトルネック可視化</li>
+                                <li>アーキテクチャ案・移行ロードマップ作成</li>
+                                <li>Docs as Code を前提とした運用設計</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="pill-soft">Cloudflare / Jamstack / API</span>
+                                <span>少人数運用を前提にした設計</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="section" aria-labelledby="about-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-title-block">
+                            <div class="section-kicker">About</div>
+                            <h2 id="about-title" class="section-title">会社概要</h2>
+                        </div>
+                        <p class="section-description">
+                            「過剰な堅牢さ」よりも、「今のチームサイズでちゃんと回る」こと。
+                            プロダクトと組織のフェーズに合わせた、ちょうどよい技術選定と運用設計を大切にしています。
+                        </p>
+                    </div>
+
+                    <div class="about-grid">
+                        <div>
+                            <div class="about-text">
+                                xbakke は、エンジニア出身の代表が1人で立ち上げた IT マイクロ法人です。
+                                スタートアップ・SaaS・Web3・クリエイター向けプロダクトなど、
+                                少人数チームの現場に入り込みながら、
+                                開発プロセスとインフラの「余白」を整えることを得意としています。
+                            </div>
+                            <div class="about-meta">
+                                <div class="about-meta-item">
+                                    <div class="about-meta-label">法人名</div>
+                                    <div class="about-meta-value">xbakke（クロスバッケ）</div>
+                                </div>
+                                <div class="about-meta-item">
+                                    <div class="about-meta-label">形態</div>
+                                    <div class="about-meta-value">ITマイクロ法人 / 個人事業</div>
+                                </div>
+                                <div class="about-meta-item">
+                                    <div class="about-meta-label">所在地</div>
+                                    <div class="about-meta-value">Japan / Remote first</div>
+                                </div>
+                                <div class="about-meta-item">
+                                    <div class="about-meta-label">提供スタイル</div>
+                                    <div class="about-meta-value">顧問・スポット・プロジェクト単位</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="about-side">
+                            <div class="about-chip-row">
+                                <span class="about-chip">Cloudflare Pages / Workers</span>
+                                <span class="about-chip">Next.js / React</span>
+                                <span class="about-chip">LLM / LangChain</span>
+                                <span class="about-chip">Docs as Code / ADR</span>
+                            </div>
+                            <div class="about-note">
+                                ご相談・お仕事のご依頼は、
+                                GitHub・X（旧Twitter）・各種コミュニティ経由でのカジュアルなお声がけから
+                                お願いしています。詳細なコンタクト情報は順次公開予定です。
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-inner">
+                <div>© <span id="year"></span> xbakke. All rights reserved.</div>
+                <div class="footer-links">
+                    <span>Built with Docs as Code mindset.</span>
+                    <a href="#hero-title">Top</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year in footer
+        (function () {
+            var y = new Date().getFullYear();
+            var el = document.getElementById("year");
+            if (el) el.textContent = y;
+        })();
+    </script>
 </body>
 </html>
