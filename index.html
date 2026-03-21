@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-lang">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum • Web3 • AI Solutions</title>
-    <meta name="description" content="Expert consulting in Quantum Computing, Web3 development, and AI implementation. We build the future, today.">
+    <title data-en="Quantum • Web3 • AI Solutions" data-ja="量子 • Web3 • AIソリューション">Quantum • Web3 • AI Solutions</title>
+    <meta name="description" 
+          data-en="Expert consulting in Quantum Computing, Web3 development, and AI implementation. We build the future, today." 
+          data-ja="量子コンピューティング、Web3開発、AI実装の専門コンサルティング。未来を今日、築きます。">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -100,6 +102,23 @@
         
         .nav-links a:hover {
             color: var(--text);
+        }
+
+        .lang-switcher {
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .lang-switcher a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .lang-switcher a.active {
+            color: var(--accent-strong);
         }
 
         main {
@@ -232,11 +251,16 @@
     <div class="page-shell">
         <header>
             <nav class="nav">
-                <div class="brand-text-main">Quantum • Web3 • AI</div>
+                <div class="brand-text-main" data-en="Quantum • Web3 • AI" data-ja="量子 • Web3 • AI">Quantum • Web3 • AI</div>
                 <div class="nav-links">
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#services" data-en="Services" data-ja="サービス">Services</a>
+                    <a href="#about" data-en="About" data-ja="概要">About</a>
+                    <a href="#contact" data-en="Contact" data-ja="お問い合わせ">Contact</a>
+                    <div class="lang-switcher">
+                        <a class="lang-link" data-lang="ja">JA</a>
+                        <span>|</span>
+                        <a class="lang-link" data-lang="en">EN</a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -244,50 +268,60 @@
         <main>
             <section class="hero">
                 <div class="container">
-                    <h1 class="hero-title">
-                        Pioneering the Future: <span class="highlight">Quantum, Web3 & AI</span>
+                    <h1 class="hero-title" 
+                        data-en="Pioneering the Future: <span class=''highlight''>Quantum, Web3 & AI</span>" 
+                        data-ja="未来を開拓する: <span class=''highlight''>量子、Web3、そしてAI</span>">
                     </h1>
-                    <p class="hero-lead">
-                        Specializing in the convergence of Quantum Computing, next-generation Web3, and cutting-edge AI to build tomorrow's solutions.
+                    <p class="hero-lead" 
+                       data-en="Specializing in the convergence of Quantum Computing, next-generation Web3, and cutting-edge AI to build tomorrow's solutions."
+                       data-ja="量子コンピューティング、次世代Web3、最先端AIの融合を専門とし、未来のソリューションを構築します。">
                     </p>
                     <div class="hero-actions">
-                        <a href="#services" class="btn-primary">Our Services</a>
-                        <a href="#contact" class="btn-secondary">Contact Us</a>
+                        <a href="#services" class="btn-primary" data-en="Our Services" data-ja="サービス詳細">Our Services</a>
+                        <a href="#contact" class="btn-secondary" data-en="Contact Us" data-ja="お問い合わせ">Contact Us</a>
                     </div>
                 </div>
             </section>
 
             <section id="services" class="section">
                 <div class="container">
-                    <h2 class="section-title">Our Services</h2>
+                    <h2 class="section-title" data-en="Our Services" data-ja="提供サービス">Our Services</h2>
                     <div class="service-grid">
                         <div class="card">
-                            <img src="pqc-image.jpg" alt="PQC Image" class="card-image">
-                            <h3 class="card-title">PQC Consulting</h3>
-                            <p class="card-description">
-                                We help you protect your digital assets from the threat of quantum computers by migrating to Post-Quantum Cryptography (PQC). Our end-to-end support includes current state analysis, roadmap creation, and implementation assistance.
-                            </p>
+                            <img src="pqc-image.jpg" class="card-image"
+                                 data-en-alt="PQC Image"
+                                 data-ja-alt="PQCイメージ">
+                            <h3 class="card-title" data-en="PQC Consulting" data-ja="PQCコンサルティング"></h3>
+                            <p class="card-description"
+                               data-en="We help you protect your digital assets from the threat of quantum computers by migrating to Post-Quantum Cryptography (PQC). Our end-to-end support includes current state analysis, roadmap creation, and implementation assistance."
+                               data-ja="耐量子計算機暗号（PQC）への移行を支援し、量子コンピュータの脅威からデジタル資産を保護します。現状分析、ロードマップ策定、実装支援まで、一気通貫でサポートします。"></p>
                         </div>
                         <div class="card">
-                            <img src="quantum-image.jpg" alt="Quantum Algorithm Development Image" class="card-image">
-                            <h3 class="card-title">Quantum Algorithm Development</h3>
-                            <p class="card-description">
-                                We design and develop innovative quantum algorithms to maximize the performance of quantum computers. Applicable to diverse fields such as optimization, machine learning, and simulation.
-                            </p>
+                            <img src="quantum-image.jpg" class="card-image"
+                                 data-en-alt="Quantum Algorithm Development Image"
+                                 data-ja-alt="量子アルゴリズム開発イメージ">
+                            <h3 class="card-title" data-en="Quantum Algorithm Development" data-ja="量子アルゴリズム開発"></h3>
+                            <p class="card-description"
+                               data-en="We design and develop innovative quantum algorithms to maximize the performance of quantum computers. Applicable to diverse fields such as optimization, machine learning, and simulation."
+                               data-ja="量子コンピュータの性能を最大限に引き出すための、革新的な量子アルゴリズムを設計・開発します。最適化問題、機械学習、シミュレーションなど、多様な分野に応用可能です。"></p>
                         </div>
                         <div class="card">
-                            <img src="qai-image.jpg" alt="Quantum AI R&D Image" class="card-image">
-                            <h3 class="card-title">Quantum AI R&D and Implementation</h3>
-                            <p class="card-description">
-                                We support the R&D of next-generation machine learning models that merge quantum computing and AI. By leveraging unique quantum phenomena, we tackle complex problems unsolvable by classical computers.
-                            </p>
+                            <img src="qai-image.jpg" class="card-image"
+                                 data-en-alt="Quantum AI R&D Image"
+                                 data-ja-alt="量子AI研究・実装支援イメージ">
+                            <h3 class="card-title" data-en="Quantum AI R&D and Implementation" data-ja="量子AI研究・実装支援"></h3>
+                            <p class="card-description"
+                               data-en="We support the R&D of next-generation machine learning models that merge quantum computing and AI. By leveraging unique quantum phenomena, we tackle complex problems unsolvable by classical computers."
+                               data-ja="量子コンピューティングとAIを融合させた、次世代の機械学習モデルの研究開発を支援します。量子特有の現象を活用し、古典コンピュータでは解けなかった複雑な問題に取り組みます。"></p>
                         </div>
                         <div class="card">
-                            <img src="web3-image.jpg" alt="Web3 Image" class="card-image">
-                            <h3 class="card-title">Web3 Development</h3>
-                            <p class="card-description">
-                                Full-stack support for leveraging Web3 technologies, including blockchain, smart contracts, NFTs, and dApps. We help create new business models and build decentralized ecosystems.
-                            </p>
+                            <img src="web3-image.jpg" class="card-image"
+                                 data-en-alt="Web3 Image"
+                                 data-ja-alt="WEB3イメージ">
+                            <h3 class="card-title" data-en="Web3 Development" data-ja="WEB3開発"></h3>
+                            <p class="card-description"
+                               data-en="Full-stack support for leveraging Web3 technologies, including blockchain, smart contracts, NFTs, and dApps. We help create new business models and build decentralized ecosystems."
+                               data-ja="ブロックチェーン、スマートコントラクト、NFT、dApps開発など、WEB3領域の技術活用を全面的にバックアップ。新しいビジネスモデルの創出と、非中央集権的なエコシステムの構築を実現します。"></p>
                         </div>
                     </div>
                 </div>
@@ -295,32 +329,81 @@
 
             <section id="about" class="section">
                 <div class="container" style="max-width: 800px; text-align: center;">
-                    <h2 class="section-title">About Us</h2>
-                    <p class="hero-lead">
-                        Driven by a passion for cutting-edge technology, we specialize in the pivotal fields of Quantum Computing, Web3, and AI. As a nimble, independent consultancy, we combine deep expertise with agile execution to solve our clients' most challenging problems.
-                    </p>
-					<p class="hero-lead">
-						Founder: Koichi Kanno
-					</p>
+                    <h2 class="section-title" data-en="About Us" data-ja="概要"></h2>
+                    <p class="hero-lead"
+                       data-en="Driven by a passion for cutting-edge technology, we specialize in the pivotal fields of Quantum Computing, Web3, and AI. As a nimble, independent consultancy, we combine deep expertise with agile execution to solve our clients' most challenging problems."
+                       data-ja="最先端技術への情熱を原動力に、量子コンピューティング、Web3、AIという極めて重要な分野を専門としています。私たちは、深い専門知識と俊敏な実行力を組み合わせ、お客様の最も困難な課題を解決する、機動力のある独立系コンサルタントです。"></p>
+                    <p class="hero-lead" data-en="Founder: Koichi Kanno" data-ja="創設者: 菅野幸一"></p>
                 </div>
             </section>
 
             <section id="contact" class="section">
                 <div class="container" style="max-width: 800px; text-align: center;">
-                    <h2 class="section-title">Get in Touch</h2>
-                    <p class="hero-lead">
-                        For consultations or project inquiries, please feel free to reach out to us at the email address below.
-                    </p>
+                    <h2 class="section-title" data-en="Get in Touch" data-ja="お問い合わせ"></h2>
+                    <p class="hero-lead"
+                       data-en="For consultations or project inquiries, please feel free to reach out to us at the email address below."
+                       data-ja="ご相談やプロジェクトのご依頼は、以下のメールアドレスまでお気軽にご連絡ください。"></p>
                     <a href="mailto:info@xbakke.com" class="btn-primary">info@xbakke.com</a>
                 </div>
             </section>
         </main>
 
         <footer>
-            <div class="footer-inner">
-                &copy; 2024 Quantum • Web3 • AI. All rights reserved.
+            <div class="footer-inner" 
+                 data-en="&copy; 2024 Quantum • Web3 • AI. All rights reserved."
+                 data-ja="&copy; 2024 Quantum • Web3 • AI. 全著作権所有。">
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langLinks = document.querySelectorAll('.lang-link');
+            const translatableElements = document.querySelectorAll('[data-en]');
+            const htmlTag = document.getElementById('html-lang');
+
+            const setLanguage = (lang) => {
+                translatableElements.forEach(el => {
+                    const text = el.getAttribute(`data-${lang}`);
+                    if (text) {
+                        // For elements that might contain HTML, like the hero title
+                        if (el.hasAttribute('data-en') && el.getAttribute('data-en').includes('<span')) {
+                            el.innerHTML = text;
+                        } else {
+                            el.textContent = text;
+                        }
+                    }
+                    // Handle image alt attributes
+                    const altText = el.getAttribute(`data-${lang}-alt`);
+                    if (altText) {
+                        el.setAttribute('alt', altText);
+                    }
+                });
+
+                htmlTag.setAttribute('lang', lang);
+                localStorage.setItem('language', lang);
+
+                // Update active link style
+                langLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-lang') === lang) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = link.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
